@@ -1,5 +1,6 @@
 package cleancode.minesweeper.tobe;
 
+import cleancode.minesweeper.tobe.config.GameConfig;
 import cleancode.minesweeper.tobe.gamelevel.Advanced;
 import cleancode.minesweeper.tobe.gamelevel.Beginner;
 import cleancode.minesweeper.tobe.gamelevel.GameLevel;
@@ -11,11 +12,17 @@ import cleancode.minesweeper.tobe.io.OutputHandler;
 
 public class GameApplication {
     public static void main(String[] args) {
-        GameLevel gameLevel = new Beginner();
-        InputHandler consoleInputHandler = new ConsoleInputHandler();
-        OutputHandler consoleOutputHandler = new ConsoleOutputHandler();
 
-        Minesweeper minesweeper = new Minesweeper(gameLevel, consoleInputHandler, consoleOutputHandler);
+        GameConfig gameConfig = new GameConfig(
+                new Beginner(),
+                new ConsoleInputHandler(),
+                new ConsoleOutputHandler()
+        );
+
+        // 게임 설정이 추가되거나 변경될 수도 있다는 도메인 지식을 발견한다면???
+        // 게임 설정이 변경될 때마다 Minesweeper 의 생성자가 계속 바뀌게 되므로, 생성자의 변경이 없도록 게임 설정 객체로 패키징을 해준 것이다.
+        // 단, 너무 과하면 역효과가 날 수도 있다.
+        Minesweeper minesweeper = new Minesweeper(gameConfig);
         minesweeper.initialize();
         minesweeper.run();
     }
