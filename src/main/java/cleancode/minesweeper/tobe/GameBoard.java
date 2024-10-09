@@ -49,11 +49,6 @@ public class GameBoard {
         return board[0].length;
     }
 
-    public String getSign(CellPosition cellPosition) {
-        Cell cell = findCell(cellPosition);
-        return cell.getSign();
-    }
-
     private Cell findCell(CellPosition cellPosition) {
         return board[cellPosition.getRowIndex()][cellPosition.getColIndex()];
     }
@@ -153,5 +148,10 @@ public class GameBoard {
     public boolean isAllCellChecked() {
         Cells cells = Cells.from(board);
         return cells.isAllChecked();
+    }
+
+    public CellSnapshot getSnapshot(CellPosition cellPosition) {
+        Cell cell = findCell(cellPosition);
+        return cell.getSnapshot();
     }
 }
