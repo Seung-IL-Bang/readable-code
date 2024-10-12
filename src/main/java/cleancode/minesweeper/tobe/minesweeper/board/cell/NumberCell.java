@@ -2,9 +2,8 @@ package cleancode.minesweeper.tobe.minesweeper.board.cell;
 
 public class NumberCell implements Cell {
 
-    private int nearbyLandMineCount;
-
     private final CellState cellState = CellState.initialize();
+    private int nearbyLandMineCount;
 
     public NumberCell(int count) {
         this.nearbyLandMineCount = count;
@@ -46,7 +45,7 @@ public class NumberCell implements Cell {
 
     @Override
     public boolean isChecked() {
-        return cellState.isChecked();
+        return cellState.isOpened();
     }
 
     @Override

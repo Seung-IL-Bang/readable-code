@@ -19,9 +19,11 @@ public class CellSnapshot { // Value Object 역할을 한다.
     public static CellSnapshot ofEmpty() {
         return of(CellSnapshotStatus.EMPTY, 0);
     }
+
     public static CellSnapshot ofFlag() {
         return of(CellSnapshotStatus.FLAG, 0);
     }
+
     public static CellSnapshot ofLandMine() {
         return of(CellSnapshotStatus.LAND_MINE, 0);
     }
